@@ -9,7 +9,7 @@ export default class App extends Component {
     super();
     this.state = {
       currency: [],
-      filteredRates: [],
+      filteredCurrency: [],
       rates: [],
     };
   }
@@ -17,6 +17,9 @@ export default class App extends Component {
   componentDidMount() {
     const baseUrl =
       'https://api.currencyfreaks.com/latest?apikey=447fd2eca99c4e77bdba23430647623f';
+
+    const selectedCurrency = ['CAD', 'IDR', 'JPY', 'CHF', 'EUR', 'GBP'];
+    const filteredData = [];
 
     axios
       .get(baseUrl)
@@ -28,7 +31,19 @@ export default class App extends Component {
             key,
             rateCurrency[key],
           ]);
+
           this.setState({ currency: converted });
+        }
+
+        if (this.state.currency.length !== 0) {
+          this.state.currency.map((val) => {
+            const filtered = selectedCurrency.includes(val[0]);
+
+            if (filtered === true) {
+              filteredData.push(val);
+              this.setState({ filteredCurrency: filteredData });
+            }
+          });
         }
       })
       .catch((error) => {
@@ -49,8 +64,8 @@ export default class App extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.currency
-              ? this.state.currency.map((val, key) => {
+            {this.state.filteredCurrency
+              ? this.state.filteredCurrency.map((val, key) => {
                   const rates = (5 / 100) * val[1];
                   const exchangeRates = parseFloat(val[1]);
                   return (
