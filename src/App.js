@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// styles
+import './App.css';
+
 export default class App extends Component {
   constructor() {
     super();
@@ -27,13 +30,6 @@ export default class App extends Component {
           ]);
           this.setState({ currency: converted });
         }
-
-        // if (this.state.currency.length !== 0) {
-        //   this.state.currency.map((val) => {
-        //     // console.log((5 / 100) * val[1]);
-        //     // this.setState({rates: val})
-        //   });
-        // }
       })
       .catch((error) => {
         console.log(error, 'error');
@@ -42,7 +38,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className='app'>
+      <div className='App'>
         <table>
           <thead>
             <tr>
@@ -69,6 +65,10 @@ export default class App extends Component {
               : null}
           </tbody>
         </table>
+        <footer className='notes'>
+          <p>Rated are based from 1 USD.</p>
+          <p>This application uses API from https://currencyfreaks.com.</p>
+        </footer>
       </div>
     );
   }

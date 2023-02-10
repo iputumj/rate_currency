@@ -1,0 +1,27 @@
+.App {
+  font-family: 'Poppins';
+  background-color: #10a19d;
+  color: #fff;
+}
+
+.App table {
+  text-align: center;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.App .notes {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.App .notes p {
+  padding: 0px;
+  margin: 0px;
+}
